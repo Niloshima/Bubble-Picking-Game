@@ -1,0 +1,28 @@
+:root{--bg1:#e9f7ff;--bg2:#b9e4f5;--ink:#0f3a52;--card:#ffffffcc;--accent:#ff6f91;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#0b2a3d;--bg2:#06141f;--ink:#e6f6ff;--card:#0f3a52cc}}
+:root[data-theme="dark"]{--bg1:#0b2a3d;--bg2:#06141f;--ink:#e6f6ff;--card:#0f3a52cc}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*{box-sizing:border-box}
+body{margin:0;height:100%;font-family:'Fredoka',system-ui,sans-serif;color:var(--ink);
+background:linear-gradient(180deg,var(--bg1),var(--bg2));overflow:hidden;user-select:none;-webkit-user-select:none}
+#hud{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);left:0;right:0;display:flex;justify-content:space-between;padding:0 16px;font-size:1.2rem;font-weight:600;z-index:5;pointer-events:none}
+#hud span{background:var(--card);padding:6px 14px;border-radius:999px}
+#field{position:absolute;inset:0;overflow:hidden;touch-action:manipulation}
+.b{position:absolute;bottom:-120px;border-radius:50%;cursor:pointer;
+background:radial-gradient(circle at 30% 28%,#fff 0 8%,transparent 9%),radial-gradient(circle at 50% 50%,rgba(255,255,255,.05) 55%,rgba(255,140,200,.35) 78%,rgba(120,200,255,.55) 100%);
+border:2px solid rgba(255,255,255,.7);animation:rise linear forwards;will-change:transform}
+.b.gold{background:radial-gradient(circle at 30% 28%,#fff 0 8%,transparent 9%),radial-gradient(circle,#ffe27a 40%,#ffb400 100%);border-color:#fff}
+.b.pop{animation:pop .25s ease-out forwards!important}
+@keyframes rise{to{transform:translate(var(--dx),calc(-100vh - 260px))}}
+@keyframes pop{to{transform:scale(1.5);opacity:0}}
+.plus{position:absolute;font-weight:600;font-size:1.4rem;color:var(--accent);pointer-events:none;animation:up .7s forwards;z-index:4}
+@keyframes up{to{transform:translateY(-50px);opacity:0}}
+#menu{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:10;padding:20px}
+#menu.hide{display:none}
+.panel{background:var(--card);backdrop-filter:blur(8px);border-radius:28px;padding:32px;max-width:380px;width:100%;text-align:center}
+h1{margin:0 0 8px;font-size:2.6rem;line-height:1}
+p{margin:6px 0;font-size:1.05rem;line-height:1.4}
+button{margin-top:18px;font:inherit;font-weight:600;font-size:1.3rem;padding:12px 34px;border:0;border-radius:999px;background:var(--accent);color:#fff;cursor:pointer}
+button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.plus{animation-duration:.01s}}
